@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reg</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static '/css/reg.css' %}">
+</head>
+<body>
+
+  <h3>Регистрация</h3>
+        <form action="registration" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <input type="Submit" name="Create user">
+        </form>
+  <div>
+            {% for message in messages %}
+            <h3>{{ message }}</h3>
+            {% endfor %}
+    </div>
+
+</body>
+</html>
