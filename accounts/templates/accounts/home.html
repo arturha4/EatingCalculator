@@ -2,13 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Home</title>
 </head>
 <body>
+    {% if request.user.is_authenticated %}
       <div>
+          <p>Hello</p>
             {% for message in messages %}
             <h3>{{ message }}</h3>
             {% endfor %}
     </div>
+    {% endif %}
 </body>
 </html>

@@ -13,6 +13,8 @@ class NewUserForm(forms.ModelForm):
 
 
 
-class UserLoginForm(AuthenticationForm):
-    class Meta:
-        fields=['username','password']
+class UserLoginForm(forms.Form):
+    email=forms.EmailField(label='Логин')
+    password=forms.CharField(widget=forms.PasswordInput,label='Пароль')
+
+

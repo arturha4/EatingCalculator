@@ -17,14 +17,18 @@ class CustomLoginView(LoginView):
     form_class =UserLoginForm
     def post(self, request, *args, **kwargs):
         print(request.POST)
-        usrname = request.POST['username']
+        usrname = request.POST['email']
         passwrd = request.POST['password']
         user = authenticate(request, username=usrname, password=passwrd)
         if user is not None:
+            messages.info(request, f'Добро пожаловать: {usrname}')
             return redirect('/home')
-        messages.error(request, "Пользователя с такими данными не сущетсвует")
+        messages.error(request, "Пользователя с такими данными не существует")
         return redirect('/login')
 
+    def get(self,request,*args,**kwargs):
+        myform=UserLoginForm
+        return render(request,'accounts/login.html',{'form':UserLoginForm})
 
 class RegistrationView(FormView):
     template_name = "accounts/register.html"
@@ -38,7 +42,6 @@ class RegistrationView(FormView):
         first_name=data['first_name']
         second_name=data['second_name']
         MyCustomUser.objects.create_user(email,password,first_name,second_name)
-        messages.info(request,f'Добро пожаловать: {first_name} {second_name}')
         return redirect('/login')
 
 
