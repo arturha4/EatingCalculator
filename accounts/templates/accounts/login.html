@@ -8,7 +8,7 @@
 <body>
 <form method="POST">
     {% csrf_token %}
-    {{ login_form.as_p}}
+    {{ login_form}}
     <input type ="submit" name="Войти">
      {% for message in messages %}
             <h3>{{ message }}</h3>
