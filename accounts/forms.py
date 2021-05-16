@@ -1,5 +1,5 @@
 from django.contrib.auth import authenticate
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.core.exceptions import ValidationError
 from django.forms import ModelForm, TextInput
 from .models import MyCustomUser
@@ -13,6 +13,8 @@ class NewUserForm(forms.ModelForm):
 
 
 
-class UserLoginForm():
-    class Meta:
-        pass
+class UserLoginForm(forms.Form):
+    email=forms.EmailField(label='Логин')
+    password=forms.CharField(widget=forms.PasswordInput,label='Пароль')
+
+

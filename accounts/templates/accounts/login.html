@@ -4,11 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Log in</title>
+    <h1>Войдите или зарегистрируйтесь</h1>
 </head>
 <body>
 <form method="POST">
     {% csrf_token %}
-    {{ login_form.as_p}}
+    {{form.as_p}}
     <input type ="submit" name="Войти">
      {% for message in messages %}
             <h3>{{ message }}</h3>
