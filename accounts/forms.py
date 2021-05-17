@@ -12,7 +12,6 @@ class NewUserForm(forms.ModelForm):
         fields=['email','first_name','second_name','password']
 
 
-
 class UserLoginForm(forms.Form):
     email=forms.EmailField(label='Логин')
     password=forms.CharField(widget=forms.PasswordInput,label='Пароль')
