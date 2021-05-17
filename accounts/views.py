@@ -5,7 +5,8 @@ from django.urls import reverse_lazy
 from django.views.generic import FormView
 
 from django.contrib import messages
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, login,logout
+from django.contrib.auth.decorators import login_required
 
 from accounts.forms import NewUserForm, UserLoginForm
 from accounts.models import MyCustomUser
@@ -21,6 +22,7 @@ class CustomLoginView(LoginView):
         passwrd = request.POST['password']
         user = authenticate(request, username=usrname, password=passwrd)
         if user is not None:
+            login(request,user)
             messages.info(request, f'Добро пожаловать: {usrname}')
             return redirect('/home')
         messages.error(request, "Пользователя с такими данными не существует")
@@ -45,10 +47,14 @@ class RegistrationView(FormView):
         return redirect('/login')
 
 
-
+@login_required(login_url='login')
 def home_page(request):
     return render(request, 'accounts/home.html')
 
+@login_required(login_url='login')
+def userlogout(request):
+    logout(request)
+    return redirect('home')
 
 from django.shortcuts import render
 
