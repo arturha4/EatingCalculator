@@ -4,7 +4,6 @@
 {% block content %}
     {% if request.user.is_authenticated %}
 
-          <p>Hello</p>
             {% for message in messages %}
             <h3>{{ message }}</h3>
             {% endfor %}

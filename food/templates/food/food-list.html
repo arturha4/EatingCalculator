@@ -1,0 +1,7 @@
+{% extends "accounts/navbar.html" %}
+{% block content %}
+<h1>Список продуктов</h1>
+{% for food in foodlist %}
+    <p>{{ food }}</p>
+{% endfor %}
+{% endblock %}

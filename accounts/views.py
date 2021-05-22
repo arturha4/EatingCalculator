@@ -1,4 +1,3 @@
-from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.views import LoginView
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
@@ -18,12 +17,12 @@ class CustomLoginView(LoginView):
     form_class =UserLoginForm
     def post(self, request, *args, **kwargs):
         print(request.POST)
-        usrname = request.POST['email']
-        passwrd = request.POST['password']
-        user = authenticate(request, username=usrname, password=passwrd)
+        username = request.POST['email']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request,user)
-            messages.info(request, f'Добро пожаловать: {usrname}')
+            messages.info(request, f'Добро пожаловать: {username}')
             return redirect('/home')
         messages.error(request, "Пользователя с такими данными не существует")
         return redirect('/login')
