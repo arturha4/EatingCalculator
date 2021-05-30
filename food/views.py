@@ -7,3 +7,7 @@ from .models import FoodEnergy,Food
 def home(request):
     foodlist=Food.objects.all()
     return render(request,'food/food-list.html',context={"foodlist":foodlist})
+
+@login_required(login_url='login')
+def test(request):
+    return render(request,'food/test.html')

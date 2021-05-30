@@ -11,11 +11,10 @@ class FoodEnergy(models.Model):
 
 
 
-
 class Food(models.Model):
     id=models.AutoField(primary_key=True)
     name=models.TextField(max_length=100)
-    image=models.ImageField()
+    image=models.ImageField(upload_to='static/images')
     energy=models.OneToOneField(FoodEnergy,on_delete=models.CASCADE)
 
 

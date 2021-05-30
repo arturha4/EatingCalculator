@@ -1,7 +1,10 @@
 {% extends "accounts/navbar.html" %}
+{% load static%}
 {% block content %}
 <h1>Список продуктов</h1>
-{% for food in foodlist %}
-    <p>{{ food }}</p>
-{% endfor %}
+
+<img src="{% static 'images/DkIzF27Ex2dy7fATmbVj8g.jpg' %}">
+
 {% endblock %}
+
+
