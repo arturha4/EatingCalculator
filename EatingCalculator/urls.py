@@ -17,9 +17,16 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from rest_framework import routers
+from food.views import FoodViewSet
+
+router=routers.SimpleRouter()
+router.register('api/food',FoodViewSet)
+
 urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
     path('',include('accounts.urls')),
     path('home',include('food.urls'),name='home'),
 
-]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
+urlpatterns+=router.urls

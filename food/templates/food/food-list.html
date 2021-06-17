@@ -1,10 +1,15 @@
-{% extends "accounts/navbar.html" %}
+{% extends 'accounts/navbar.html' %}
 {% load static%}
 {% block content %}
+<head>
+<link rel="stylesheet"   href="{% static 'css/foodlist.css' %}">
+</head>
+<body>
 <h1>Список продуктов</h1>
-
-<img src="{% static 'images/DkIzF27Ex2dy7fATmbVj8g.jpg' %}">
-
+<div class="food-item">
+<img src="{{ food_url.image  }}">
+</div>
+</body>
 {% endblock %}
 
 
