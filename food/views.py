@@ -12,6 +12,9 @@ def home(request):
 @login_required(login_url='login')
 def test(request):
     return render(request,'food/test.html')
+@login_required(login_url='login')
+def foodview(request):
+    return render(request,'food/foodview.html')
 
 
 class FoodViewSet(viewsets.ModelViewSet):
