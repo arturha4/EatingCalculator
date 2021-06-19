@@ -18,15 +18,15 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from rest_framework import routers
-from food.views import FoodViewSet
+from food.views import FoodViewSet,FoodEnergyViewSet
 
 router=routers.SimpleRouter()
 router.register('api/food',FoodViewSet)
+router.register('api/foodenergy',FoodEnergyViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
     path('',include('accounts.urls')),
     path('home',include('food.urls'),name='home'),
-
 ]
 urlpatterns+=router.urls

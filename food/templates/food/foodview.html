@@ -1,7 +1,7 @@
+
 <!DOCTYPE html>
 <html lang="en">
 {% load static%}
-
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -12,11 +12,14 @@
 </head>
 <body>
 {% verbatim %}
+<div class="wrap1per">
 <div class="food_items" id="food_app">
     <div class="but button_primary" v-for="f in food">
             {{ f.name }}
+            <img :src="`{{f.image}}`">
     </div>
 </div>
+</div>>
 {% endverbatim %}
 
 <script src="/static/js/food.js"></script>
