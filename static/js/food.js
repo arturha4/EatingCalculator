@@ -1,5 +1,6 @@
 new Vue({
     el:'#food_app',
+    delimiters:['[[',']]'],
     data:{
         food:[]
     },
