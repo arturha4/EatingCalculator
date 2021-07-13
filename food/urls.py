@@ -9,5 +9,6 @@ urlpatterns = [
     path('',views.home_page,name='home'),
     path('/food-list',foodviews.home,name='food'),
     path('/test',foodviews.test,name=''),
-    path('/food',foodviews.foodview)
+    path('/food',foodviews.foodview),
+    path('/create_food',foodviews.create_food,name='create_food')
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
