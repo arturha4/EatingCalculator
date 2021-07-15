@@ -1,9 +1,14 @@
 new Vue({
-    el:'#create_food_app',
-     delimiters:['[[',']]'],
+    el:'#food_create',
+    delimiters:['[[',']]'],
+    data:{
+        food_fields:[]
+    },
     methods:{
-        onFileSelected(event){
-            console.log(event)
+        checkForm(){
+            console.log(this.name)
+            console.log(this.fats)
         }
     }
+
 })

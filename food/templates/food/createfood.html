@@ -12,10 +12,23 @@
 <body>
 {% verbatim %}
 <div class="wrap1per">
-    <div class="create_food" id="create_food_app">
-        <input type="file" @change="onFileSelected">
+    <div class="create_food" id="food_create" @submit.prevent="checkForm">
+        <div class="food_create_form">
+            <div id="food_create_fields">
+                <p>Создание нового продукта</p>
+        <input type="text" name="Название продкута" placeholder="Название продкута" v-model="name">
+        <input type="number" name="Калорийность (в 100г)" placeholder="Калорийность (в 100г)" v-model="kkalories">
+        <input type="number" name="Белки (в 100г)" placeholder="Белки (в 100г)" v-model="proteins">
+        <input type="number" name="Жиры (в 100г)" placeholder="Жиры (в 100г)" v-model="fats">
+        <input type="number" name="Углеводы (в 100г)" placeholder="Углеводы (в 100г)" v-model="cydroharbonates">
+                <p>Добавьте изображение для еды</p>
+        <input type="file" @change="onFileSelected" placeholder="Выберите картинку" v-model="image">
+            <input type="submit" value="Submit">
+            </div>
+        </div>
     </div>
 </div>
 {% endverbatim %}
+    <script src="/static/js/image_ipload_vue.js"></script>
 </body>
 </html>
