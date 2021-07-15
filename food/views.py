@@ -24,6 +24,10 @@ def foodview(request):
     return render(request, 'food/foodview.html')
 
 
+@login_required(login_url='login')
+def create_food(request):
+    return render(request,'food/createfood.html')
+
 class FoodViewSet(viewsets.ModelViewSet):
     queryset = Food.objects.all()
     serializer_class = FoodSerializer
