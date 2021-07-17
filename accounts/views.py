@@ -1,3 +1,4 @@
+import django
 from django.contrib.auth.views import LoginView
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
@@ -23,7 +24,7 @@ class CustomLoginView(LoginView):
         if user is not None:
             login(request,user)
             messages.info(request, f'Добро пожаловать: {username}')
-            return redirect('/home')
+            return redirect('/home/food')
         messages.error(request, "Пользователя с такими данными не существует")
         return redirect('/login')
 
@@ -37,13 +38,20 @@ class RegistrationView(FormView):
     form_class = NewUserForm
 
     def post(self, request, *args, **kwargs):
-        data=request.POST
-        email=data['email']
-        password=data['password']
-        first_name=data['first_name']
-        second_name=data['second_name']
-        MyCustomUser.objects.create_user(email,password,first_name,second_name)
-        return redirect('/login')
+        try:
+            data=request.POST
+            email=data['email']
+            password=data['password']
+            first_name=data['first_name']
+            second_name=data['second_name']
+            MyCustomUser.objects.create_user(email, password, first_name, second_name)
+            return redirect('/login')
+        except  django.db.utils.IntegrityError:
+            messages.info(request,'Пользователь с такой почтой уже существует')
+            return redirect('/registration')
+
+
+
 
 
 @login_required(login_url='login')
